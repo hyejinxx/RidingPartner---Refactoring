@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "709101583410",
+    "firebase_url": "https://ridingpartner-4dd9e-default-rtdb.firebaseio.com",
+    "project_id": "ridingpartner-4dd9e",
+    "storage_bucket": "ridingpartner-4dd9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709101583410:android:4aa06bf890507d6e52102b",
+        "android_client_info": {
+          "package_name": "com.neighbor.ridingpartner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709101583410-3kls60k3i4a434m55e7i7jh531kj3omk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.neighbor.ridingpartner",
+            "certificate_hash": "97b23e1a18ac5552cf3d92e610a0284e64533c82"
+          }
+        },
+        {
+          "client_id": "709101583410-821ur5k1g911pui9hrp9vddjiulo8kuf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMXp5uBX4I-lVqeykT9_zmcT3KEVlTgqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709101583410-821ur5k1g911pui9hrp9vddjiulo8kuf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "709101583410-89lcjpumtpgon28thqls428a4bsgblip.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.neighbor.ridingpartner"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
