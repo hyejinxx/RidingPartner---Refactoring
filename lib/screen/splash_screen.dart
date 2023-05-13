@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../provider/auth_provider.dart';
 import '../widgets/dialog/permission_dialog.dart';
 import 'bottom_nav.dart';
@@ -28,9 +27,11 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
     final authState = ref.watch(authProvider);
 
     if (authState != null) {
-      Future.delayed(const Duration(milliseconds: 1500), () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const BottomNavigation()));
+      Future.delayed(const Duration(milliseconds: 1500), () async{
+        bool result = await backgroundPermissionCheck();
+        if(result){
+          toMainScreen();
+        }
       });
     } else {
       Connectivity().checkConnectivity().then((value) {
@@ -77,7 +78,7 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
                 ))));
   }
 
-  Future backgroundPermissionCheck() async {
+  Future<bool> backgroundPermissionCheck() async {
     final pref = await SharedPreferences.getInstance();
     bool permission = pref.getBool('backLocationPermission') ?? false;
 
@@ -86,18 +87,19 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
 
       if (permission) {
         pref.setBool('backLocationPermission', true);
-        toMainScreen();
+        return true;
       } else {
         showToastMessage("어플 사용을 위해 권한 동의가 필요합니다.");
         permission = await permissionDialog();
         if (permission) {
           pref.setBool('backLocationPermission', true);
-          toMainScreen();
+          return true;
+        }else{
+          return false;
         }
       }
     } else {
-      showToastMessage("이 어플은 트래킹을 위해 백그라운드에서 위치 수집을 할 수 있습니다.");
-      toMainScreen();
+      return true;
     }
   }
 
@@ -105,10 +107,14 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
       Fluttertoast.showToast(msg: message, toastLength: Toast.LENGTH_SHORT);
 
   void toMainScreen() {
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const BottomNavigation()),
-        (route) => false);
+    showToastMessage("이 어플은 트래킹을 위해 백그라운드에서 위치 수집을 할 수 있습니다.");
+    if (mounted) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const BottomNavigation()),
+              (route) => false);
+    }
+
   }
 
   Future<bool> permissionDialog() async {

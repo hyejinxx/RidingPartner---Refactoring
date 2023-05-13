@@ -57,9 +57,10 @@ class ImagePickerService {
     PermissionStatus storageStatus = await Permission.storage.request();
     PermissionStatus cameraStatus = await Permission.camera.request();
 
-    if (!storageStatus.isGranted || !cameraStatus.isGranted) {
-      Fluttertoast.showToast(msg: "권한을 허용해주세요");
+    if (storageStatus.isGranted || cameraStatus.isGranted) {
       return;
+    }else{
+      Fluttertoast.showToast(msg: "권한을 허용해주세요");
     }
   }
 }

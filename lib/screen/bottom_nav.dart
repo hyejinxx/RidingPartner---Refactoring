@@ -19,6 +19,7 @@ class BottomNavigation extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     final bottomState = ref.watch(bottomNavigationProvider);
     final load = ref.watch(locationLoadProvider);
     const EdgeInsets itemPadding = EdgeInsets.fromLTRB(0, 8, 0, 5);

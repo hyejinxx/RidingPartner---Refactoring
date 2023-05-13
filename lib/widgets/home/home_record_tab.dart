@@ -72,7 +72,7 @@ class RecordTabRowState extends ConsumerState<RecordTabRow>
     switch (recordState) {
       case RecordState.loading:
         return const SizedBox(
-            height: 200,
+            height: 250,
             child: Center(
               child: Text(
                 "라이더님의 주행 기록을 불러오는 중입니다",
@@ -82,7 +82,7 @@ class RecordTabRowState extends ConsumerState<RecordTabRow>
             ));
       case RecordState.none:
         return const SizedBox(
-            height: 200,
+            height: 250,
             child: Center(
               child: Text(
                 "아직 주행한 기록이 없습니다\n라이딩 파트너와 함께 달려보세요!",
@@ -92,7 +92,7 @@ class RecordTabRowState extends ConsumerState<RecordTabRow>
             ));
       case RecordState.empty:
         return const SizedBox(
-            height: 200,
+            height: 250,
             child: Center(
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -113,6 +113,7 @@ class RecordTabRowState extends ConsumerState<RecordTabRow>
               ],
             )));
       case RecordState.fail:
+        // Fluttertoast.showToast(msg: "기록 조회에 실패했습니다\n네트워크 상태를 체크해주세요!", toastLength: Toast.LENGTH_SHORT);
         return const SizedBox(
             height: 100,
             child: Center(

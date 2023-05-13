@@ -10,8 +10,10 @@ class FirebaseStorageService {
   ) async {
     List<String> imgUrl = [];
     for (var element in images.entries) {
-      var a = await uploadImage(element.key, element.value);
-      imgUrl.add(a);
+      var url = await uploadImage(element.key, element.value);
+      if(url != "err") {
+        imgUrl.add(url);
+      }
     }
     return imgUrl;
   }

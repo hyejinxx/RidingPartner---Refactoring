@@ -340,7 +340,8 @@ class RecordBoxWidgetState extends ConsumerState<RecordBoxWidget> {
                         onPressed: () => setState(() {
                           visible = !visible;
                         }),
-                        icon: SizedBox(
+                        icon: Container(
+                          margin: const EdgeInsets.all(3),
                           width: 18,
                           child: Image.asset('assets/icons/menu_bar.png',
                               fit: BoxFit.fitWidth),
