@@ -70,12 +70,8 @@ class Get14DaysRecordService {
             days = 1;
           }
         }
-        if (recordFor14Days[days] !=
-            Record(
-              distance: 0.0,
-              date: '',
-              timestamp: 0,
-            )) {
+        if (recordFor14Days[days].date != ''
+            ) {
           if (recordFor14Days[days].distance < element.distance) {
             recordFor14Days[days] = element;
           }
@@ -93,14 +89,8 @@ class Get14DaysRecordService {
     int count = 0;
 
     for (var element in records) {
-      if (element !=
-          Record(
-              date: '',
-              distance: 0.0,
-              timestamp: 0,
-              memo: '',
-              images: null,
-              kcal: 0)) {
+      if (element.date !=
+          '') {
         count++;
       }
     }

@@ -200,7 +200,7 @@ class MapSearchScreenState extends ConsumerState<MapSearchScreen> {
                   )),
               // 내 위치 버튼
               Positioned(
-                bottom: buttonsPositionAlpha + 50,
+                bottom: 80,
                 left: 20,
                 child: FloatingActionButton(
                   heroTag: 'mypos',
@@ -215,7 +215,7 @@ class MapSearchScreenState extends ConsumerState<MapSearchScreen> {
               ),
               // 검색 버튼
               Positioned(
-                bottom: buttonsPositionAlpha + 120,
+                bottom: 150,
                 left: 20,
                 child: FloatingActionButton(
                   heroTag: 'search',

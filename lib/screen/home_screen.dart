@@ -44,10 +44,10 @@ class HomeScreenState extends ConsumerState<HomeScreen>
                     children: [
                       const RecommendPlaceWidget(),
                       const RecordTabRow(),
-                      SizedBox(
-                          height: 330,
-                          width: MediaQuery.of(context).size.width,
-                          child: recordChart()),
+                      // SizedBox(
+                      //     height: 330,
+                      //     width: MediaQuery.of(context).size.width,
+                      //     child: recordChart()),
                       const SettingWidget(),
                       SizedBox(
                         height: 60,
