@@ -15,7 +15,23 @@
       },
       "oauth_client": [
         {
-          "client_id": "709101583410-3kls60k3i4a434m55e7i7jh531kj3omk.apps.googleusercontent.com",
+          "client_id": "709101583410-22bvvh4ld5b6gij4k9k6n7g66ncf0g1e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.neighbor.ridingpartner",
+            "certificate_hash": "f48011a4ccdde9aa2e21d39d213b4897f86cc151"
+          }
+        },
+        {
+          "client_id": "709101583410-54voet1a6vl0gbbrlqfjkp1bs08bnip7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.neighbor.ridingpartner",
+            "certificate_hash": "b2f1941581d3368d8fe927feac6c272ecde25a1f"
+          }
+        },
+        {
+          "client_id": "709101583410-7lpndr1bafh7mb2i5v4lt6l05n17g531.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.neighbor.ridingpartner",

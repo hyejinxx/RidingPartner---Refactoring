@@ -10,7 +10,7 @@ class NetworkHelper {
   factory NetworkHelper() => _instance;
   NetworkHelper._internal();
 
-  Future<Result> getData(String url) async {
+  Future<Result> getHttp(String url) async {
     try {
       http.Response response = await http.get(Uri.parse(url));
 
@@ -22,6 +22,10 @@ class NetworkHelper {
     } catch (e) {
       return Result(isSuccess: false, response: null);
     }
+  }
+  Future get(String url, Map<String, dynamic>? header)async{
+    final Response response = await Dio().get(url, options: Options(headers: header ?? {}));
+    return response.data;
   }
 
   Future post(String url, Map<String, dynamic> query) async {

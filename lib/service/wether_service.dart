@@ -15,7 +15,7 @@ class OpenWeatherService {
   Future<Weather> getWeather() async {
     _position = MyLocation().position;
 
-    final result = await NetworkHelper().getData(
+    final result = await NetworkHelper().getHttp(
         '$_baseUrl?lat=${_position?.latitude}&lon=${_position?.longitude}&appid=$_apiKey&units=metric');
 
     final weatherData = result.response;

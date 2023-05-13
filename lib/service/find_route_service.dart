@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:ridingpartner/models/place.dart';
 import 'package:ridingpartner/models/route.dart';
+import 'package:ridingpartner/network/network_helper.dart';
 import 'package:ridingpartner/service/naver_map_service.dart';
 
 import '../provider/navigation_provider.dart';
@@ -20,12 +21,14 @@ class FindRouteService {
     final url =
         "https://dapi.kakao.com/v2/local/geo/coord2address.json?x=$lon&y=$lat&input_coord=WGS84";
     Map<String, String> requestHeaders = {'Authorization': 'KakaoAK $kakaoKey'};
-    final response = await http.get(Uri.parse(url), headers: requestHeaders);
-    if (((json.decode(response.body)['documents']) as List).isNotEmpty) {
-      return json.decode(response.body)['documents'][0]['address']
-              ['address_name'] ??
-          '';
+    try{
+    final response = await NetworkHelper().get(url, requestHeaders);
+    if (((response['documents']) as List).isNotEmpty) {
+      return response['documents'][0]['address']['address_name'] ?? '';
     } else {
+      return '';
+    }
+    }catch(e){
       return '';
     }
   }
