@@ -35,6 +35,7 @@ final recordProvider =
 
 final timerProvider =
     StateNotifierProvider<TimerNotifier, int>((ref) => TimerNotifier());
+final dateProvider = StateProvider<String>((ref) => '');
 
 class RidingScreen extends ConsumerStatefulWidget {
   const RidingScreen({super.key});
@@ -77,7 +78,6 @@ class RidingScreenState extends ConsumerState<RidingScreen> {
   Widget build(BuildContext context) {
     final position = ref.watch(positionProvider);
     final ridingState = ref.watch(ridingStateProvider);
-    final timer = ref.watch(timerProvider);
 
     if (ridingState == RidingState.riding && position != null) {
       if (_polylineCoordinates.isNotEmpty) {
@@ -151,6 +151,7 @@ class RidingScreenState extends ConsumerState<RidingScreen> {
                                 ref.read(ridingStateProvider.notifier).state =
                                     RidingState.riding;
                                 ref.read(timerProvider.notifier).start();
+                                ref.read(dateProvider.notifier).state = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
 
                                 final controller = await _controller.future;
 
@@ -414,21 +415,24 @@ class RecordButtonState extends ConsumerState<RecordButton> {
           }, '이어서 주행')
         ],
         ridingFloatingButton(() {
+          String date = ref.read(dateProvider);
           ref.read(ridingStateProvider.notifier).state = RidingState.stop;
+          ref.read(timerProvider.notifier).pause();
           final Record record = Record(
               distance: ref.read(distanceProvider).roundToDouble(),
-              date: DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
+              date: date,
               timestamp: ref.read(timerProvider),
               kcal: (550 * (time) / 3600).roundToDouble());
 
           ref.read(recordProvider.notifier).saveData(record, []);
+          ref.read(ridingStateProvider.notifier).state = RidingState.stop;
           widget.onStop();
 
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => RidingResultScreen(
-                        date: record.date,
+                        date: date,
                       )));
         }, '주행 종료')
       ],

@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "709101583410-22bvvh4ld5b6gij4k9k6n7g66ncf0g1e.apps.googleusercontent.com",
+          "client_id": "709101583410-16lpo07kcd0ja3h5dpo41h1qot2fjofl.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.neighbor.ridingpartner",
-            "certificate_hash": "f48011a4ccdde9aa2e21d39d213b4897f86cc151"
+            "certificate_hash": "8c33a69ad6b1b6a109f1a741f1451a220317f2c0"
           }
         },
         {
