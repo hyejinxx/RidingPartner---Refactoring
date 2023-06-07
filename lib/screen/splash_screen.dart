@@ -107,7 +107,7 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
       Fluttertoast.showToast(msg: message, toastLength: Toast.LENGTH_SHORT);
 
   void toMainScreen() {
-    showToastMessage("이 어플은 트래킹을 위해 백그라운드에서 위치 수집을 할 수 있습니다.");
+    showToastMessage("이 어플은 위치 기반의 사용자 자전거 주행 기록 기능을 지원하기 때문에 앱이 닫혀 있을 때나 사용하지 않을 때도 위치데이터를 수집합니다.");
     if (mounted) {
       Navigator.pushAndRemoveUntil(
           context,

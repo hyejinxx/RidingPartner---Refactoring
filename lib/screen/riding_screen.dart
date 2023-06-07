@@ -151,7 +151,9 @@ class RidingScreenState extends ConsumerState<RidingScreen> {
                                 ref.read(ridingStateProvider.notifier).state =
                                     RidingState.riding;
                                 ref.read(timerProvider.notifier).start();
-                                ref.read(dateProvider.notifier).state = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now());
+                                ref.read(dateProvider.notifier).state =
+                                    DateFormat('yyyy-MM-dd HH:mm:ss')
+                                        .format(DateTime.now());
 
                                 final controller = await _controller.future;
 
@@ -433,6 +435,7 @@ class RecordButtonState extends ConsumerState<RecordButton> {
               MaterialPageRoute(
                   builder: (context) => RidingResultScreen(
                         date: date,
+                        record: record,
                       )));
         }, '주행 종료')
       ],

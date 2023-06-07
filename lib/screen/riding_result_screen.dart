@@ -15,8 +15,10 @@ import '../style/textstyle.dart';
 final memoProvider = StateProvider((ref) => '');
 
 class RidingResultScreen extends ConsumerStatefulWidget {
-  const RidingResultScreen({super.key, required this.date});
+  const RidingResultScreen(
+      {super.key, required this.date, required this.record});
   final String date;
+  final Record record;
 
   @override
   RidingResultScreenState createState() => RidingResultScreenState();
@@ -26,7 +28,7 @@ class RidingResultScreenState extends ConsumerState<RidingResultScreen> {
   @override
   void initState() {
     super.initState();
-
+    ref.read(recordProvider.notifier).state = widget.record;
     ref.read(recordProvider.notifier).getData(widget.date);
   }
 
@@ -77,8 +79,11 @@ class RidingResultScreenState extends ConsumerState<RidingResultScreen> {
                         child: recordWidget(record, record.distance / 3 * 3600),
                       ),
                     ] else ...[
-                      const Text("데이터가 없습니다.",
-                          style: TextStyles.dayRecordtextStyle3)
+                      Container(
+                        margin: const EdgeInsets.symmetric(vertical: 15.0),
+                        child: recordWidget(
+                            widget.record, widget.record.distance / 3 * 3600),
+                      ),
                     ],
                     const ImageWidget(),
                     const Divider(
